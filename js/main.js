@@ -21,4 +21,8 @@
 
   })
 
+  Handlebars.registerHelper('format', function(num){
+return accounting.formatNumber(num)
+  })
+
 })();
