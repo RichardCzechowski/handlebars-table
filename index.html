@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.7.0.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v2.0.0.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/vendor/modernizr-2.7.0.min.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+    <!-- Add your site or application content here -->
+    <div id="table"></div>
+      <script id="entry-template" type="text/x-handlebars-template">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Country Code</th>
+              <th>Country Name</th>
+              <th>Population</th>
+              <th>English</th>
+            </tr>
+            <tbody>
+              {{#each country}}
+              <tr {{number pop}}>
+                <td>{{code}}</td>
+                <td>{{name}}</td>
+                <td>{{pop}}</td>
+                <td>{{boole eng}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </thead>
+        </table>
+        <div class="text-success">Population>100,000</div>
+        <div class="text-danger">Population>5,000,000</div>
+      </script>
+    <script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+      var source   = $("#entry-template").html();
+      var template = Handlebars.compile(source);
+
+      var context= {
+        "country":[
+        {name: "Belarus", code: "BY", pop: 9685000, eng: false},
+        {name: "Belize", code: "BZ", pop: 314522, eng: true},
+        {name: "Canada", code: "CA", pop: 33679000, eng: true},
+        {name: "Cocos [Keeling] Islands", code: "CC", pop: 628, eng: true},
+        {name: "Democratic Republic of the Congo", code: "CD", pop: 70916439, eng: false},
+        {name: "Central African Republic", code: "CF", pop: 4844927, eng: false},
+        {name: "Republic of the Congo", code: "CG", pop: 3039126, eng: false},
+        {name: "Switzerland", code: "CH", pop: 7581000, eng: false},
+        ]
+        };
+        $('#table').append(template(context));
+      </script>
+
+
+
+
+
     </body>
-</html>
+  </html>
