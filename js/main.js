@@ -9,10 +9,10 @@
   })
 
   Handlebars.registerHelper('number', function(num){
-    if(num>5000000){
+    if(accounting.unformat(num)>5000000){
       return new Handlebars.SafeString("class='text-danger'")
     }
-    else  if(num>100000){
+    else  if(accounting.unformat(num)>100000){
       return new Handlebars.SafeString("class='text-success'")
     }
     else{
