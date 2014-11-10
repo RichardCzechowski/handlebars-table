@@ -35,7 +35,7 @@
               <th>Country Code</th>
               <th>Country Name</th>
               <th>Population</th>
-              <th>English</th>
+              <th>English?</th>
             </tr>
             <tbody>
               {{#each country}}
@@ -49,14 +49,14 @@
             </tbody>
           </thead>
         </table>
-        <div class="text-success">Population>100,000</div>
-        <div class="text-danger">Population>5,000,000</div>
+        <div class="text-success">Population > 100,000</div>
+        <div class="text-danger">Population > 5,000,000</div>
       </script>
     <script>
 
       var source   = $("#entry-template").html();
       var template = Handlebars.compile(source);
-var num= accounting.formatColumn([9685000, 314522, 33679000, 628, 70916439, 4844917, 3039126, 7581000], [symbol=""], [precision = 0]);
+var num= accounting.formatColumn([9685000, 314522, 33679000, 628, 70916439, 4844927, 3039126, 7581000], [symbol=""], [precision = 0]);
       var context= {
         "country":[
         {name: "Belarus", code: "BY", pop: num[0], eng: false},
