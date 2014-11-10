@@ -19,6 +19,7 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
     <script src="js/vendor/modernizr-2.7.0.min.js"></script>
+    <script src="js/accounting.js"></script>
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -55,17 +56,17 @@
 
       var source   = $("#entry-template").html();
       var template = Handlebars.compile(source);
-
+var num= accounting.formatColumn([9685000, 314522, 33679000, 628, 70916439, 4844917, 3039126, 7581000], [symbol=""], [precision = 0]);
       var context= {
         "country":[
-        {name: "Belarus", code: "BY", pop: 9685000, eng: false},
-        {name: "Belize", code: "BZ", pop: 314522, eng: true},
-        {name: "Canada", code: "CA", pop: 33679000, eng: true},
-        {name: "Cocos [Keeling] Islands", code: "CC", pop: 628, eng: true},
-        {name: "Democratic Republic of the Congo", code: "CD", pop: 70916439, eng: false},
-        {name: "Central African Republic", code: "CF", pop: 4844927, eng: false},
-        {name: "Republic of the Congo", code: "CG", pop: 3039126, eng: false},
-        {name: "Switzerland", code: "CH", pop: 7581000, eng: false},
+        {name: "Belarus", code: "BY", pop: num[0], eng: false},
+        {name: "Belize", code: "BZ", pop: num[1], eng: true},
+        {name: "Canada", code: "CA", pop: num[2], eng: true},
+        {name: "Cocos [Keeling] Islands", code: "CC", pop: num[3], eng: true},
+        {name: "Democratic Republic of the Congo", code: "CD", pop: num[4], eng: false},
+        {name: "Central African Republic", code: "CF", pop: num[5], eng: false},
+        {name: "Republic of the Congo", code: "CG", pop: num[6], eng: false},
+        {name: "Switzerland", code: "CH", pop: num[7], eng: false},
         ]
         };
         $('#table').append(template(context));
