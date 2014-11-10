@@ -4,7 +4,7 @@
       return new Handlebars.SafeString("<span class='glyphicon glyphicon-ok'></span>")
     }
     else{
-      return new Handlebars.SafeString("<span class='glyphicon glyphicon-remove'></span>")
+      return
     }
   })
 
